@@ -13,15 +13,17 @@ class CountdownTimer {
     this.selector = selector;
     this.targetDate = targetDate;
   }
+
   selector() {
     this.selector = refs.timer;
   }
+
   start() {
-    const startTime = Date.now();
-    this.targetDate = setInterval(() => {
+    setInterval(() => {
       const currentTime = Date.now();
-      const time = startTime - currentTime;
+      const time = currentTime - this.targetDate;
       updateClockface(time);
+      console.log('?');
     }, 1000);
   }
 
@@ -36,8 +38,9 @@ class CountdownTimer {
     refs.hours.textContent = `${hours}`;
     refs.mins.textContent = `${mins}`;
     refs.secs.textContent = `${secs}`;
-    // console.log(`${hours}:${mins}:${secs}`);
+    console.log(`${hours}:${mins}:${secs}`);
   }
+
   pad(value) {
     if (value.lenght > 2) {
       String(value).padStart(3, '0');
