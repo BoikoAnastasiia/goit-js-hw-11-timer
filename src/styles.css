@@ -1,7 +1,7 @@
 html {
   box-sizing: border-box;
 }
-
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 *,
 *::before,
 *::after {
@@ -19,13 +19,31 @@ body {
   margin-left: auto;
   text-align: center;
   margin-top: 200px;
-  /* background-image: url('./images/bg-pattern.png'); */
 }
 
 .timer {
   display: flex;
+  justify-content: center;
 }
 
 .field {
+  width: 200px;
+  height: 280px;
+  background-color: rgb(44, 44, 44);
   flex-direction: column;
+  margin-left: 25px;
+  border-radius: 7px;
+}
+
+.value {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 240px;
+  color: rgb(255, 255, 255);
+}
+
+.label {
+  font-size: 30px;
+  color: darkgrey;
+  padding-top: 30px;
+  display: block;
 }
