@@ -27,8 +27,6 @@ class CountdownTimer {
       const currentTime = Date.now();
       const time = this.targetDate - currentTime;
       const updateClockface = () => {
-        // const currentTime = Date.now();
-        // const time = currentTime - this.targetDate;
         const days = pad(String(Math.floor(time / (1000 * 60 * 60 * 24))));
         console.log(days);
         const hours = pad(
