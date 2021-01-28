@@ -28,7 +28,7 @@ body {
 }
 
 .field {
-  width: 200px;
+  min-width: 200px;
   height: 280px;
   background-color: rgb(44, 44, 44);
   flex-direction: column;
