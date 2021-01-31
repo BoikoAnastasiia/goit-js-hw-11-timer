@@ -28,18 +28,24 @@ body {
 }
 
 .field {
-  min-width: 200px;
+  min-width: 280px;
   height: 280px;
   background-color: rgb(44, 44, 44);
   flex-direction: column;
   margin-left: 25px;
   border-radius: 7px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .value {
   font-family: 'Bebas Neue', cursive;
   font-size: 240px;
   color: rgb(255, 255, 255);
+}
+
+.field:first-child {
+  min-width: 380px;
 }
 
 .label {
