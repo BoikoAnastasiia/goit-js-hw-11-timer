@@ -5,6 +5,7 @@ const refs = {
   secs: document.querySelector('span[data-value="secs"]'),
   timer: document.querySelector('#timer-1'),
 };
+
 class CountdownTimer {
   constructor({ selector, targetDate }) {
     this.selector = selector;
