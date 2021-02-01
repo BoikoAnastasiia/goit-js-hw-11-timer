@@ -12,6 +12,13 @@ class CountdownTimer {
     this.targetDate = targetDate;
   }
 
+  assign() {
+    refs.days.textContent = `${this.days}`;
+    refs.hours.textContent = `${this.hours}`;
+    refs.mins.textContent = `${this.mins}`;
+    refs.secs.textContent = `${this.secs}`;
+  }
+
   start() {
     setInterval(() => {
       const pad = value => {
@@ -30,11 +37,7 @@ class CountdownTimer {
         );
         const mins = pad(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)));
         const secs = pad(Math.floor((time % (1000 * 60)) / 1000));
-
-        refs.days.textContent = `${days}`;
-        refs.hours.textContent = `${hours}`;
-        refs.mins.textContent = `${mins}`;
-        refs.secs.textContent = `${secs}`;
+        assign();
       };
 
       updateClockface(time);
