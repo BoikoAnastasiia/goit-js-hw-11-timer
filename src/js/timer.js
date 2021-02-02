@@ -12,35 +12,39 @@ class CountdownTimer {
     this.targetDate = targetDate;
   }
 
-  assign() {
-    refs.days.textContent = `${this.days}`;
-    refs.hours.textContent = `${this.hours}`;
-    refs.mins.textContent = `${this.mins}`;
-    refs.secs.textContent = `${this.secs}`;
+  assign(days, hours, mins, secs) {
+    refs.days.textContent = `${days}`;
+    refs.hours.textContent = `${hours}`;
+    refs.mins.textContent = `${mins}`;
+    refs.secs.textContent = `${secs}`;
+  }
+
+  updateClockface = time => {
+    const days = this.pad(
+      String(Math.abs(Math.floor(time / (1000 * 60 * 60 * 24)))),
+    );
+    const hours = this.pad(
+      Math.abs(Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))),
+    );
+    const mins = this.pad(
+      Math.abs(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60))),
+    );
+    const secs = this.pad(Math.abs(Math.floor((time % (1000 * 60)) / 1000)));
+
+    this.assign(days, hours, mins, secs);
+  };
+
+  pad(value) {
+    let step = 2;
+    if (value.lenght > 2) step = 3;
+    return String(value).padStart(step, '0');
   }
 
   start() {
     setInterval(() => {
-      const pad = value => {
-        if (value.lenght > 2) {
-          String(value).padStart(3, '0');
-        }
-        String(value).padStart(2, '0');
-        return value;
-      };
       const currentTime = Date.now();
       const time = currentTime - this.targetDate;
-      const updateClockface = () => {
-        const days = pad(String(Math.floor(time / (1000 * 60 * 60 * 24))));
-        const hours = pad(
-          Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-        );
-        const mins = pad(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)));
-        const secs = pad(Math.floor((time % (1000 * 60)) / 1000));
-        assign();
-      };
-
-      updateClockface(time);
+      this.updateClockface(time);
     }, 1000);
   }
 }
